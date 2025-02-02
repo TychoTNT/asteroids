@@ -32,6 +32,7 @@ def main():
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
     roidfield = AsteroidField()
 
+#Game Loop
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -44,6 +45,11 @@ def main():
 
         updatable.update(dt)
         
+        #Check Collision
+        for obj in asteroids:
+            if obj.check_collision(player):
+                print ("Game over!")
+                return
 
         
         pygame.display.flip()
